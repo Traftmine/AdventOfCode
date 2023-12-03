@@ -15,9 +15,7 @@ def findInLine(line:str):
 def result():
     result = 0
     for lines in f:
-        print(lines)
         result += findInLine(lines)
-        print(result)
     return result
 
 print(result())
