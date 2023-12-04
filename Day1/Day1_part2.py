@@ -1,5 +1,5 @@
 valid_digits = {"one": "1", "two": "2", "three": "3", "four": "4", "five": "5", "six": "6", "seven": "7", "eight": "8", "nine": "9"}
-f = open("input3.txt", "r")
+f = open("input.txt", "r")
 
 def Convert_String_Digits_To_Int(digits:str):
     new_digits = valid_digits[digits]
