@@ -11,24 +11,20 @@ def check(input:list,output:list):
     return cmpt
 
 def main():
-    result, line_nb, toAdd = [], 0, 0
+    result, line_nb = [], 0
     for lines in f:
         line = (" ".join(lines.strip().split()[2::])).split("|")
         first, second = line[0].split(), line[1].split()
+        result_line = [0 for i in range(len(first))]
         nb = check(first,second)
         print("new line" + " resultat : " + str(nb))
-        if len(result) > line_nb:
-            print("toAdd : " + str(toAdd))
-            toAdd = result[line_nb]
+        result = result_line.copy()
         for i in range(nb):
-            if result == []:
-                result.append(1)
-            elif i >= len(result):
-                result.append(1)
+            if result[line_nb+i+1] == 0:
+                result_line[line_nb+i+1] += 1
             else:
-                result[line_nb+i]+= toAdd
-        print(result)
+                result_line[line_nb+i+1] += result[line_nb+i+1]
         line_nb +=1
-    
+        print(result_line)
 
 main()
