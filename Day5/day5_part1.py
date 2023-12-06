@@ -1,3 +1,5 @@
+from operator import itemgetter
+
 f = open("input.txt","r")
 
 seeds_soil = {}
@@ -13,7 +15,8 @@ def convert(soil:list):
         dest_list = [i for i in range(dest,dest+rg)]
         src_list = [i for i in range(src,src+rg)]
         for i in range(rg):
-            seeds_soil[dest_list[i]] = src_list[i]
+            if dest_list[i] not in seeds_soil:
+                seeds_soil[src_list[i]] = dest_list[i]
     return 0
 
 def get_map_liste(f):
@@ -26,10 +29,11 @@ def get_map_liste(f):
             mape = []
     return map_liste[1::]
 
-def main(): #Problème dict not true
+def main():
     map_liste = get_map_liste(f)
     for e in map_liste:
         convert(e)
+    print(seeds_soil.get(50))
     return 0
 
 main()
